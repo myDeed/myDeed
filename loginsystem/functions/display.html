@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Files</title>
+    <base target="_blank" rel="noopener noreferrer">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #000;
+            color: #fff;
+        }
+        .file-link {
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body style="background-color: black;">
+    <h1 style="color: white;">Files you have access to</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Serial Number</th>
+                <th>File Name</th>
+                <th>Uploader's Address</th>
+                <th>IPFS URL</th>
+                <th>Shared Access With</th>
+                <th>Revoke Access</th>
+            </tr>
+        </thead>
+        <tbody id="filesTable" style="background-color: black; color: white;">
+            <!-- File rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+    <script>
+        async function loadContractConfig() {
+    try {
+        const response = await fetch('config.json');
+        const config = await response.json();
+        return config;
+    } catch (error) {
+        console.error('Error fetching config:', error);
+    }
+}
+
+async function displayFiles() {
+    try {
+        const config = await loadContractConfig();
+        if (!config) {
+            throw new Error('Failed to load config.');
+        }
+
+        if (window.ethereum) {
+            const web3 = new Web3(window.ethereum);
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const contract = new web3.eth.Contract(config.contractABI, config.contractAddress);
+            const accounts = await web3.eth.getAccounts();
+            
+            // Call the display method from your smart contract
+            const results = await contract.methods.display().call({ from: accounts[0] });
+
+            // Ensure results contain the expected properties
+            if (!results || !results.fileNames || !results.fileHashes || !results.uploaderAddresses) {
+                throw new Error('The display function response is missing one or more properties.');
+            }
+
+            const { fileNames, fileHashes, uploaderAddresses } = results;
+            
+            const tableBody = document.getElementById('filesTable');
+            tableBody.innerHTML = '';
+    
+            for (let i = 0; i < fileNames.length; i++) {
+                const sharedUsers = await contract.methods.getSharedUsers(fileHashes[i]).call({ from: accounts[0] });
+                const revokeButtonHTML = (uploaderAddresses[i].toLowerCase() === accounts[0].toLowerCase() && sharedUsers.length > 0) 
+                    ? `<button onclick="revokeAccess('${fileHashes[i]}', '${sharedUsers[0]}')">Revoke</button>` 
+                    : '';
+    
+                const row = `<tr>
+                    <td>${i + 1}</td>
+                    <td>${fileNames[i]}</td>
+                    <td>${uploaderAddresses[i]}</td> <!-- Display the actual uploader's address -->
+                    <td class="file-link"><a href="https://ipfs.io/ipfs/${fileHashes[i]}">View File</a></td>
+                    <td>${sharedUsers.join(', ')}</td>
+                    <td>${revokeButtonHTML}</td>
+                </tr>`;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            }
+        } else {
+            console.log('Please install MetaMask!');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+
+    async function revokeAccess(fileHash, sharedUser) {
+        try {
+            const config = await loadContractConfig();
+            if (!config) {
+                throw new Error('Failed to load contract configuration.');
+            }
+            const web3 = new Web3(window.ethereum);
+            const contract = new web3.eth.Contract(config.contractABI, config.contractAddress);
+            const accounts = await web3.eth.getAccounts();
+            const userAccount = accounts[0];
+
+            await contract.methods.disallow(fileHash, sharedUser).send({ from: userAccount });
+            alert('Access revoked successfully.');
+            displayFiles(); // Refresh the list
+        } catch (error) {
+            console.error('Error in revoking access:', error);
+            alert('Failed to revoke access.');
+        }
+    }
+
+    // When the DOM is fully loaded, call the displayFiles function
+    window.addEventListener('DOMContentLoaded', (event) => {
+        displayFiles();
+    });
+        </script>
+</body>
+</html>

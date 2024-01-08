@@ -1,0 +1,64 @@
+<!-- navbar.html -->
+<html>
+    <head>
+        <title>Navbar</title>
+        <link rel="stylesheet" href="styles.css">
+        <!-- Other head elements -->
+    </head>
+    <body>
+        
+        <div class="navbar" style="background-color: black;">
+            <img src="footer-logo.png" alt="myDeed - saveNsecure" style="height: 50px;" onclick="checkConnectionAndLoad('mydeed.html')" class="logo"> <!-- Adjust the height as needed -->
+            <button id="upload-btn" class="button" onclick="checkConnectionAndLoad('upload.html')">Upload Files</button>
+            <button id="files-btn" class="button" onclick="checkConnectionAndLoad('display.html')">My Files</button>
+            <button id="share-btn" class="button" onclick="checkConnectionAndLoad('share.html')">Share Access</button>
+            <button id="back-btn" class="button" onclick="window.top.location.href='/loginsystem/Main.html';">Go back to Main Page</button>
+            <button id="connectButton" class="button" onclick="connectWallet()">Connect Wallet</button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+        
+        <script>
+            // Variable to keep track of the MetaMask connection status
+            let isMetaMaskConnected = false;
+        
+            // Function that checks the connection before loading the page
+            function checkConnectionAndLoad(page) {
+                if (isMetaMaskConnected) {
+                    // Assuming 'mainContent' is the name of the iframe in which you want to load the pages.
+                    parent.mainContent.location.href = page;
+                } else {
+                    alert('Please connect to MetaMask first.');
+                }
+            }
+        
+            // Function to connect the wallet
+            async function connectWallet() {
+                try {
+                    if (window.ethereum) {
+                        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        if (accounts.length > 0) {
+                            const account = accounts[0];
+                            console.log('Wallet connected: ', account);
+                            isMetaMaskConnected = true; // Update the connection status
+                            document.getElementById('connectButton').textContent = `Connected: ${account}`;
+                            localStorage.setItem('connectedWallet', account); // Store the wallet address in local storage
+                            
+                            // Now load 'mydeed.html' in the other frame
+                            parent.mainContent.location.href = 'mydeed.html';
+                            
+                        } else {
+                            alert('MetaMask connection failed. Please try again.');
+                        }
+                    } else {
+                        alert('MetaMask is not detected. Please install MetaMask.');
+                    }
+                } catch (error) {
+                    console.error('Error connecting to MetaMask:', error);
+                    alert('An error occurred while connecting to MetaMask.');
+                }
+            }
+        </script>
+</body>
+</html>
+</body>
+</html>
