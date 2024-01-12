@@ -97,7 +97,7 @@ async function displayFiles() {
                     <td>${i + 1}</td>
                     <td>${fileNames[i]}</td>
                     <td>${uploaderAddresses[i]}</td> <!-- Display the actual uploader's address -->
-                    <td class="file-link"><a href="https://ipfs.io/ipfs/${fileHashes[i]}">View File</a></td>
+                    <td class="file-link"><a href="https://ipfs.io/ipfs/${fileHashes[i]}" target="mainContent">View File</a></td>
                     <td>${sharedUsers.join(', ')}</td>
                     <td>${revokeButtonHTML}</td>
                 </tr>`;
