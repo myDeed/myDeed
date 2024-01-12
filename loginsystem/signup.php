@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo '<script>
             setTimeout(function(){
                 window.location.href = "login.php";
-            }, 5000); // 5000 milliseconds = 5 seconds
+            }, 1000); // 1000 milliseconds = 1 seconds
          </script>';
         }
     }
@@ -104,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
         <div class="form-group">
             <label for="age">Age </label>
-            <input type="number" class="form-control" id="age" name="age" aria-describedby="emailHelp">
+            <input type="number" class="form-control" id="age" name="age" aria-describedby="emailHelp" min=18 max=80>
             
         </div>
         <div class="form-group">
