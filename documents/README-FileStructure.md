@@ -39,7 +39,7 @@ myDeed
 | ├── package-lock.json # NPM package lock file
 | ├── package.json # NPM package file
 | ├── readme.md # Readme for the documents directory
-| └──  signup.php # Signup PHP script
+| └── signup.php # Signup PHP script
 |
 └── screenshots/ # Screenshots related to the project
 | ├── change-keys.png # Screenshot for change-keys
@@ -50,7 +50,6 @@ myDeed
 | ├── page-5.png 
 | ├── page-6.png 
 | ├── page-7.png 
-| ├── readme.md # Readme for screenshots
 | └── xampp-1.png 
 │
 └── README.md # Main README file for the repository
