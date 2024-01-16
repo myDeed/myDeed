@@ -108,4 +108,8 @@ To deploy the smart contract through hardhat
   npx hardhat run scripts/deploy.js --network sepolia
 ```
 
-6. Accordingly change the contract's address & ABI in the `config.json` file in the `functions` folder under the `loginsystem` directory.
+6. On successfull deployment- 
+- The new contract address will be displayed in the CLI after running the above `npx ...` command.
+- A new folder named `artifacts` will be created. Naviagate to `mydeed.json` to find the new contract ABI.
+
+7. Accordingly change the contract's address & ABI in the `config.json` file in the `functions` folder under the `loginsystem` directory.
