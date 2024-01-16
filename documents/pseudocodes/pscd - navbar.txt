@@ -1,0 +1,25 @@
+Navbar.html
+Start
+    Load Navbar HTML page
+    Set isMetaMaskConnected = false
+
+    Function checkConnectionAndLoad(page)
+        If isMetaMaskConnected is true
+            Load the specified page in the 'mainContent' iframe
+        Else
+            Display an alert to connect to MetaMask
+
+    Function connectWallet()
+        Try
+            If window.ethereum is available
+                Request account access from MetaMask
+                If accounts are available
+                    Set isMetaMaskConnected = true
+                    Update the 'connectButton' text to show the connected account
+                    Store the connected wallet address in local storage
+                    Load 'mydeed.html' in the 'mainContent' iframe
+                Else
+                    Display an alert for failed MetaMask connection
+            Else
+                Display an alert to install MetaMask
+        Catch any errors and display an error alert
