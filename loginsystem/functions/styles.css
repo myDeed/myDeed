@@ -1,0 +1,70 @@
+body {
+    font-family: sans-serif;
+}
+p{
+    font-family: sans-serif;
+}
+
+/* General navbar styling */
+.navbar {
+    display: flex;
+    justify-content: start; /* Align items to the start of the navbar */
+    align-items: center;
+    padding: 15px;
+    background-color: black; /* Assuming a black navbar background */
+    border-bottom: 1px solid #e0e0e0; /* Subtle border */
+  }
+  
+  /* Logo image styling */
+  .navbar img.logo {
+    height: 50px; /* Adjust based on your actual logo size */
+    cursor: pointer; /* Indicates the logo is clickable */
+    margin-right: 30px; /* Space after the logo */
+  }
+  
+  /* Button styling */
+  .navbar button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    margin: auto;
+    margin-right: 10px; /* Space between buttons */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.1s; /* Smooth transition for hover effect */
+  }
+  
+  .navbar button:hover {
+    background-color: #3e8e41; /* Darker green on hover */
+  }
+  
+  /* Right-align the "Connect Wallet" button */
+  #connectButton {
+    margin-left: auto; /* Push the connect button to the right */
+  }
+  
+  /* Remove margin from the last button (optional) */
+  .navbar button:last-child {
+    margin-right: 0;
+  }
+  
+  /* Dynamic content styling */
+  #dynamic-content {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    width: 500px; /* Adjust width as needed */
+    margin: 20px auto; /* Center horizontally and add vertical space */
+  }
+  
+  .center {
+    margin: auto;
+  }
+
+  h1{
+    text-align: center;
+  }
+
+ 
