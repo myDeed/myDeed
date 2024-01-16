@@ -1,6 +1,7 @@
 
 ![Logo](https://github.com/myDeed/myDeed/blob/main/loginsystem/images/logo01.png)
 
+- [FILE STRUCTURE](https://github.com/myDeed/myDeed/blob/main/documents/README-FileStructure.md)
 
 # myDeed
 
