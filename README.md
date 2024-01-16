@@ -84,3 +84,21 @@ http://localhost/phpmyadmin/
 9. Note:: Don't forget to add the required api keys and other essentials keys in `/loginsystem/functions/config.json`
 - ![App Screenshot](https://github.com/myDeed/myDeed/blob/main/screenshots/change-keys.png)
 
+## Deployment
+
+To deploy the smart contract through hardhat
+
+
+1. Intall hardhat (Root directory as the project)
+```bash
+  npm install --save-dev hardhat@latest
+```
+
+2. After Installation of hardhat
+```bash
+  npx hardhat
+```
+
+3. This should download all the node modules.
+
+4. Use the same hardhat-config.js file as in the project and so the necessary changes in the config.json file.
