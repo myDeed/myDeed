@@ -4,8 +4,11 @@ myDeed
 |
 └── documents/
 │
-├── B45-Project Report Final(Aligned).pdf 
-├── B45-myDeed-FinalVivaVoce-PPT.pptx 
+| ├── B45-Project Report Final(Aligned).pdf 
+| ├── B45-myDeed-FinalVivaVoce-PPT.pptx
+| ├── B45-Appendix-C.pdf
+| ├── README-FileStructure.md
+| ├── README-report&presentation.md 
 │
 └── loginsystem/ # Login system related files
 |
