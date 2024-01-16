@@ -101,4 +101,11 @@ To deploy the smart contract through hardhat
 
 3. This should download all the node modules.
 
-4. Use the same hardhat-config.js file as in the project and thus do the necessary changes in the config.json file.
+4. Use the same hardhat-config.js file as in the project and so the necessary changes in the `config.json` file in the `functions` folder under the `loginsystem` directory.
+
+5. To deploy your smart contract with hardhat, use this command.
+```bash
+  npx hardhat run scripts/deploy.js --network sepolia
+```
+
+6. Accordingly change the contract's address & ABI in the `config.json` file in the `functions` folder under the `loginsystem` directory.
