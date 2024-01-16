@@ -2,6 +2,7 @@
 ![Logo](https://github.com/myDeed/myDeed/blob/main/loginsystem/images/logo01.png)
 
 
+
 # myDeed
 
 This project manages digital documents by storing their metadata on the Ethereum blockchain. Users can add, share, and display the files they have access to; whilst they can also revoke access of these documents from other users. This solution demonstrates the power of blockchain technology in enabling secure and transparent document sharing.
