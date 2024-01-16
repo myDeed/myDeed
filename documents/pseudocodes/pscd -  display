@@ -1,0 +1,41 @@
+Display.html
+Start
+- Load the page.
+
+On page load:
+    - Define loadContractConfig function:
+        - Fetch 'config.json' file.
+        - Parse the JSON response to get contractAddress and contractABI.
+        - Handle any errors that occur during fetching.
+
+    - Define displayFiles function:
+        - Call loadContractConfig to get contract configuration.
+        - If window.ethereum is available:
+            - Create a new Web3 instance with window.ethereum.
+            - Request account access with window.ethereum.
+            - Create a new contract instance with contractABI and contractAddress.
+            - Get the user's Ethereum accounts.
+            - Call the display method from the smart contract.
+            - Validate the results to ensure they contain fileNames, fileHashes, and uploaderAddresses.
+            - Clear the existing contents of the 'filesTable'.
+            - Iterate over the files:
+                - For each file, get shared users.
+                - Create a table row with serial number, file name, uploader's address, IPFS URL, shared users, and a revoke access button.
+                - Insert the row into 'filesTable'.
+        - Else:
+            - Log: "Please install MetaMask!"
+
+    - Define revokeAccess function:
+        - Parameters: fileHash, sharedUser.
+        - Call loadContractConfig to get contract configuration.
+        - If window.ethereum is available:
+            - Create a new Web3 instance.
+            - Get user's Ethereum accounts.
+            - Call the disallow method of the smart contract to revoke access.
+            - Display an alert on successful revocation.
+            - Refresh the file list by calling displayFiles.
+        - Handle any errors with an alert and logging.
+
+    - Add an event listener to call displayFiles when the DOM content is fully loaded.
+
+Stop
