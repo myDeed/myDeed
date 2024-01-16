@@ -4,6 +4,14 @@ myDeed
 |
 └── documents/
 │
+| ├── pseudocodes
+| | ├── pscd - display
+| | ├── pscd - dbconnect.md
+| | ├── pscd - login.md
+| | ├── pscd - navbar.txt
+| | ├── pscd - share
+| | ├── pscd - signup.md
+| | ├── pscd - upload.txt
 | ├── B45-Project Report Final(Aligned).pdf 
 | ├── B45-myDeed-FinalVivaVoce-PPT.pptx
 | ├── B45-Appendix-C.pdf
