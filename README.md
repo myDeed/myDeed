@@ -82,7 +82,7 @@ http://localhost/phpmyadmin/
 ```
 
 9. Note:: Don't forget to add the required api keys and other essentials keys in `/loginsystem/functions/config.json`
-- ![App Screenshot](https://github.com/myDeed/myDeed/blob/main/screenshots/change-keys.png)
+![App Screenshot](https://github.com/myDeed/myDeed/blob/main/screenshots/change-keys.png)
 
 ## Deployment
 
