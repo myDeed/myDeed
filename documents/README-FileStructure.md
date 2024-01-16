@@ -28,6 +28,7 @@ myDeed
 | ├── package.json # NPM package file
 | ├── readme.md # Readme for the documents directory
 | └──  signup.php # Signup PHP script
+|
 └── screenshots/ # Screenshots related to the project
 | ├── change-keys.png # Screenshot for change-keys
 | ├── page-1.png 
