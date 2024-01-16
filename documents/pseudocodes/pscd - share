@@ -1,0 +1,38 @@
+Share.html
+Start
+- Load the page.
+
+On page load:
+    - Check if window.ethereum is available:
+        - If yes:
+            - Create a new Web3 instance with window.ethereum.
+            - Request account access with window.ethereum.
+            - Call loadContractConfig function:
+                - Fetch 'config.json' file.
+                - Parse the JSON response to get contractAddress and contractABI.
+                - Call populateFilesDropdown function:
+                    - Create a new contract instance with contractABI and contractAddress.
+                    - Call the display method of the contract to get files.
+                    - Populate the fileDropdown with file names and hashes.
+                    - Handle any errors that occur.
+        - If no:
+            - Display an alert: "Please install MetaMask!"
+
+On shareAccessBtn click:
+    - Get selected file hash and new user's Ethereum address from the form.
+    - Validate selected file hash and new user's address:
+        - If invalid, display an alert and stop.
+    - Check if the new user's address is the same as the current user's address:
+        - If yes, display an alert: "Cannot share with your own address." and stop.
+    - Create a new contract instance with contractABI and contractAddress.
+    - Fetch the list of users who already have access to the selected file.
+    - Check if the new user is already in the list:
+        - If yes, display an alert: "This user already has access to the file." and stop.
+    - Call the allow method of the contract to grant access:
+        - Log the transaction receipt.
+        - Display an alert: "Access granted to new user: [newUserAddress]".
+        - Redirect to 'display.html'.
+    - Handle any errors with an alert and logging.
+
+Stop
+
