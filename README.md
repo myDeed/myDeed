@@ -61,7 +61,7 @@ This project manages digital documents by storing their metadata on the Ethereum
 5. Edit the "httpd.conf" file
 
 - Open the file 
-![App Screenshot](https://github.com/myDeed/myDeed/blob/main/screenshots/xampp-1.png)
+-- ![App Screenshot](https://github.com/myDeed/myDeed/blob/main/screenshots/xampp-1.png)
 
 - Find "index.html" and add the file name "signup.php" at the end of that line.
 
