@@ -38,7 +38,6 @@ myDeed
 | ├── login.php # Login PHP script
 | ├── package-lock.json # NPM package lock file
 | ├── package.json # NPM package file
-| ├── readme.md # Readme for the documents directory
 | └── signup.php # Signup PHP script
 |
 └── screenshots/ # Screenshots related to the project
