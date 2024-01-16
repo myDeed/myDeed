@@ -1,0 +1,35 @@
+Upload.html 
+Start
+    On uploadBtn click:
+        Get fileInput and fileNameInput elements
+        If fileName is empty:
+            Display alert: "Please enter a file name."
+            Stop
+        If no file is selected:
+            Display alert: "Please select a file."
+            Stop
+        Get the selected file
+        Create a new FormData object and append the selected file to it
+        Fetch the 'config.json' file
+        Parse the JSON response to get pinataApiKey, pinataSecretApiKey, contractAddress, and contractABI
+        Upload the file to IPFS via Pinata using fetch:
+            - Method: POST
+            - Headers: 'pinata_api_key' and 'pinata_secret_api_key'
+            - Body: formData
+        If the response is not ok:
+            Throw an error with the response status text
+        Get the IPFS hash from the response data
+        Set the value of fileHash input to the IPFS hash
+        If window.ethereum is available:
+            Create a new Web3 instance with window.ethereum
+            Enable window.ethereum
+            Create a new contract instance with contractABI and contractAddress
+            Get the user's accounts
+            Add the IPFS hash and file name to the smart contract and send the transaction
+            Log the transaction receipt
+            Display an alert with the message: "successfully uploaded - IPFS Hash: <ipfsHash>"
+            Redirect to 'display.html'
+        Else:
+            Log: "MetaMask is not installed!"
+        Catch and log any errors that occur during the process
+Stop
