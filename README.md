@@ -1,5 +1,5 @@
 
-![Logo](https://github.com/myDeed/myDeed/blob/main/loginsystem/images/logo01.png)
+![Logo](https://github.com/myDeed/myDeed/blob/main/loginsystem/images/logo01.png =601x219)
 
 
 # myDeed
